@@ -20,8 +20,9 @@ class Contact(models.Model):
     state = USStateField(null=True, blank=True)
     zip_code = USZipCodeField(null=True, blank=True)
     birthday = models.DateField(blank=True, null=True)
-    note = models.ForeignKey("Note", on_delete=models.CASCADE, related_name="notes_for_contact", null=True, blank=True)
+    # note = models.ForeignKey("Note", on_delete=models.CASCADE, related_name="notes_for_contact", null=True, blank=True)
 
 class Note(models.Model):
     note = models.CharField(max_length=255, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE, related_name="notes_for_contact", null=True, blank=True)

@@ -2,6 +2,7 @@
 
 {% block content %}
 <h1>View Contact</h1>
+<p><a href="{% url 'add_note' pk=contact.pk %}">Add New Note</a></p>
 
 <div class="flex flex-wrap">
   <div class="w-33 pa3">
@@ -39,6 +40,14 @@
     </div>
     {% endif %}
 
+    {% for note in notes %}
+        {% if note.note %}
+            <div class="flex">
+            <div class="pr2"></div>
+            <div>- {{ note.note }}</div>
+            </div>
+        {% endif %}
+    {% endfor %}
     <p>
       <a href="{% url 'edit_contact' pk=contact.pk %}">Edit Contact</a><br>    
       <a class="red" href="{% url 'delete_contact' pk=contact.pk %}">Delete Contact</a><br>
