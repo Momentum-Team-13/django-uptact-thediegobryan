@@ -54,12 +54,16 @@ $ cp uptact/.env.sample uptact/.env
 For the first assignment, spend time familiarizing yourself with Django. Look at the `uptact` directory (the _project directory_) and the `contacts` directory (an _app directory_). Answer the following questions for yourself:
 
 - If I wanted to add a new URL to this project, what two files would I edit?
+    -uptact/urls.py
+    -views.py
 - If I wanted to add a birthday to each contact, what file would I edit?
-
+    -contacts/models.py
 Then do the following steps:
-
 1. Add a birthday field to the `Contact` model. This field should be of type `DateField` and should be allowed to be null and empty.
+<!-- line 22 birthday = models.DateField(blank=True, null=True) -->
+
 2. Make sure you can edit the birthday by changing the `ContactForm`.
+<!-- forms.py added birthday to forms -->
 3. Add the ability to display the birthday on the list of contacts. You will have to edit `templates/contacts/list_contacts.html`.
 
 When you get through that, add a birthday to one of your contacts to test out your code.
@@ -71,8 +75,9 @@ With this assignment, we are going to explore relationships between models, and 
 Answer the following questions:
 
 - If I wanted to add a new model, where would I do that?
+models.py
 - If I wanted to connect the new model to the `Contact` model, how would I do that?
-
+ forms.py is an example of this
 Then do the following steps:
 
 1. Add a new model, `Note`, to the `contacts` app. This model should contain text for the note and the date/time of the note. Look at the `auto_now_add` option for the `DateTimeField` to have the date/time automatically populated.
